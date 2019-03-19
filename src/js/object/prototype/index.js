@@ -40,4 +40,4 @@ console.log( dylan,nvWa);
 console.log( Person.length, Boy.length); // 3 , 2 申明函数的形参
 console.log(dylan.length, nvWa.length); // undefined undefined;
 
-console.log(Person.prototype, Boy.prototype)
+console.log(Person.prototype, Boy.prototype);
