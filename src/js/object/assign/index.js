@@ -36,11 +36,11 @@ const source = {
   d: [1,2,3]
 };
 
-let cloneObject = Object.assign(target, source); // or {...source}
+let cloneObject = Object.assign({},target, source); // or {...source}
 
 // deep clone method
 // debugger;
-let deepObject = Object.assign(target, JSON.parse(JSON.stringify(source)));
+let deepObject = Object.assign({}, target, JSON.parse(JSON.stringify(source)));
 
 source.c.deep = true;
 source.d[0] = 4;
@@ -51,10 +51,21 @@ console.log('深克隆',deepObject);
 console.log(Object.assign({}, 6, true,undefined, Symbol('foo')));
 // clone String or Array
 console.log(Object.assign({}, 'abc')); // { 0: 'a', 1: 'b', 2: 'c' }
-console.log(Object.assign({}, [1,2,3]))// { 0: 1, 1: 2, 2: 3}
+console.log(Object.assign({}, [1,2,3]));// { 0: 1, 1: 2, 2: 3}
 
 
 
+// getter
+const getObject = {
+  a: 1,
+  set b(val) {
+    return 1;
+  }
+};
+let setClone = Object.assign({}, getObject);
+setClone.b = 2
+console.log(setClone, )
 
 
+getObject.b = 1 ;
 
