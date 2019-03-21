@@ -41,6 +41,8 @@ Objecgt.defineProperty(obj, prop, descriptor);
   </td>
 </table>
 
-> 有些选项不一定是自身属性，可能是继承的，如果要保留这样可以冻结Object.prototype or Object.create(null)
+> 如上选项不一定是自身属性，可能是继承的，如果要保留这样可以冻结Object.prototype or Object.create(null)
+
+> enumerable可枚举才可以被解构
 
 
