@@ -80,19 +80,60 @@ const obj = {
   a: 1
 };
 
-Object.defineProperty(obj, 'b', {
-  get() { return 1; },
-  configurable: false,
+// Object.defineProperty(obj, 'b', {
+//   get() { return 1; },
+//   configurable: false,
 
-});
+// });
 
-Object.defineProperty(obj, 'b', {
-  set(val) {
-    console.log('setting', val);
-    return val;
-  }
-})
+// Object.defineProperty(obj, 'b', {
+//   set(val) {
+//     console.log('setting', val);
+//     return val;
+//   }
+// })
 
 
 obj.b = 'ccc';
+
+
+// object defineProperty 数据描述符和存取描述符 在prototype 的区别
+
+function DefinePropotype() {
+
+};
+
+Object.defineProperty(DefinePropotype.prototype, 'desc', {
+  set(val) {
+    console.log('.....setting',val);
+    this.d = val;
+  },
+  get() {
+    
+    return 2;
+  }
+});
+
+let a = new DefinePropotype();
+let b = new DefinePropotype();
+a.desc = 'aDesc';
+console.log(a, b, b.desc);
+
+function DataDefinePrototype() {
+  DefinePropotype.call(this);
+};
+
+
+Object.defineProperty(DataDefinePrototype.prototype, 'ds', {
+  configurable: false,
+  enumerable: true,
+  writable: true,
+  value: 1,
+});
+
+let c = new DataDefinePrototype();
+let d = new DataDefinePrototype();
+c.ds = 2;
+
+console.log(a, b, c, d);
 

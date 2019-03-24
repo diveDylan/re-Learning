@@ -46,3 +46,19 @@ Objecgt.defineProperty(obj, prop, descriptor);
 > enumerable可枚举才可以被解构
 
 
+# defineProperties
+
+```
+Object.defineProperties(obj, {
+  'pro1': {
+    // descriptions
+  },
+  'pro2: {
+    // descriptions
+  },
+  ...
+})
+
+```
+
+
