@@ -29,6 +29,3 @@ async function testIterator(iterator) {
 
 // testIterator(myAsyncIterator);
 
-// 解构写法，尝试下
-
-[...myAsyncIterator]
