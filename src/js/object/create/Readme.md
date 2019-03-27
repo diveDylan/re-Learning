@@ -10,3 +10,5 @@ Object.create(proto, [propertiesObject]);
 */
 // 适用于继承
 ```
+
+> Object.create(null) 创建一个原型为空的对象
