@@ -24,7 +24,9 @@ let g = new Person();
 let dylan = new Man('dylan')
 dylan.walk()
 console.log(g,dylan)
-console.log(dylan.hasOwnProperty('say'))
-console.log(dylan.hasOwnProperty('go'))
-console.log(dylan.hasOwnProperty('swimmer'))
-console.log(dylan.hasOwnProperty('toString'))
+console.log(dylan.hasOwnProperty('say')) // true
+console.log(dylan.hasOwnProperty('go')) // false
+console.log(dylan.hasOwnProperty('swimmer')) // false
+console.log(dylan.hasOwnProperty('toString')) // false
+
+// 避免对象上存在hasOwnProperty属性
