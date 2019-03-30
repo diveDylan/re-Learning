@@ -58,7 +58,9 @@ static prop = super.propParent// parent.static.prop
 static methond() {
   super.methodParent()
 }
+
 ```
+*** 静态属性、方法绑定在constructor下面 ***
 
 
 # 私有属性

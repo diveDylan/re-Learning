@@ -1,18 +1,29 @@
 'use strict';
-
+let sy = Symbol('sayHi')
 class Person {
   static canSpeak = true;
+  static   getText() {
+    console.log(1)
+  }
   constructor(name, age) {
     this.name = name;
     this.age = age;
+    
   }
   sayHai() {
     console.log(Person.canSpeak ? `Hi, i am ${this.name}` : 'non-speaker');
   }
   // 这样是等同于constructor: this.sayHi = true 而不是定义在原型上
-  sayHi = true
+  sayHi = true;
+  [sy](){
+    console.log('private method ')
+  }
 }
+
+
 let a = new Person();
+// a.sy()
+a[sy]()
 class Man extends Person {
   static isMale = true;
   static speak() {
@@ -36,7 +47,7 @@ class Man extends Person {
 let dylan = new Man({name: 'dylan', age: 2, canSwim: true});
 dylan.sayHai();
 Man.speak()
-console.log(a, dylan, );
+console.log(a, dylan,Person );
 
 
 class Test {
