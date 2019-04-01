@@ -25,3 +25,19 @@ toString(undefined);   // [object Undefined]
 toString(null);        // [object Null]
 ```
 
+
+# method
+
+```
+// isArray
+function isArray(val) {
+  return Object.prototype.toString.call(val) === '[object Array]'
+}
+
+// isData
+function isDate(val) {
+  return Object.prototype.toString.call(val) === '[object Date]'
+}
+
+```
+
