@@ -45,7 +45,7 @@ function Person(name, age) {
   this.age = age
 }
 Person.prototype.say = function () {
-  console.log('person say ...')
+  console.log('person say ...', this.name)
 }
 function Man() {
   // here we cannot apply the prototype
@@ -87,3 +87,63 @@ let my = new Child('meiyuan', 1)
 let cat = new CatChild('ouyuan', 1,2)
 
 console.log(my, cat)
+
+// 以下代码实现apply
+if(!Function.prototype.myApply) {
+  // 为了更完美定义function 
+  // 初始默认this为window
+  Function.prototype.myApply = function (content=window, args) {
+    content.fn = this // 指向当前函数
+    // 执行该函数
+    /**
+     * apply api中arg是伪数组
+     */
+    args = args ? Array.prototype.slice(args) : []
+    let res = content.fn(...args)
+    delete content.fn
+    return res
+  }
+}
+
+
+function myCopy() {
+  return Array.prototype.slice.myApply(arguments)
+}
+
+
+
+console.log(myCopy([1,2,3]))
+
+const girl = new Person({
+  name: 'girl',
+  age: 'young'
+})
+const dylan = {name: 'dylan'}
+girl.say.myApply(dylan)
+
+
+function Swimmer(name, gender) {
+
+    this.name = name
+    this.gender = gender
+
+}
+
+class MaleSwimmer {
+  constructor(props) {
+    Swimmer.myApply(this,[props] )
+  }
+}
+
+let r = new Swimmer('ren', 'female')
+
+let y = new MaleSwimmer('dylan')
+
+console.log(r, y)
+
+function logThis() {
+  console.log(this, 'logThis')
+}
+
+logThis()
+logThis.myApply(r)

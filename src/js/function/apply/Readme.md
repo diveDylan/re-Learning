@@ -3,7 +3,7 @@
 apply 方法使用指定的this对象调用一个函数,参数是一个数组或者伪数组对象
 
 > 对象继承使用
-<!-- 继承构造函数只继承属性不继承原型 -->
+>继承构造函数只继承属性不继承原型 
 
 # Syntax
 ```
@@ -46,4 +46,25 @@ function getMaxOfArray(arr) {
 }
 ```
 
+# Polyfill
+
+```
+// the polyfill of allpy
+if(!Function.prototype.myApply) {
+  // 初始默认this为window
+  Function.prototype.myApply = function (content=window, args) {
+    content.fn = this // 指向当前函数
+
+    // apply api中arg是伪数组
+    args = args ? Array.prototype.slice(args) : []
+
+    // 执行函数
+    let res = content.fn(...args)
+    delete content.fn
+    // 函数返回值 a function alawys has a return value
+    return res
+  }
+}
+
+```
 
