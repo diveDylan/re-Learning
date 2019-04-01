@@ -29,7 +29,7 @@ Array.isArray(new Uint8Array(32))
 
 # polyfill
 
-[Object.toString](../../object.toString/Readme.md)
+[Object.toString](../../object/toString/Readme.md)
 
 ```
 // polyfill
