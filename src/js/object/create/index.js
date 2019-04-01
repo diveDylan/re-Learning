@@ -89,3 +89,45 @@ Object.defineProperty(o, 'cool', {
 })
 
 console.log(o);
+
+if(!Object.prototype.myCreate) {
+  Object.prototype.myCreate = function(proto) {
+    if( typeof proto !== 'object' &&  typeof proto !== 'function') {
+      throw new TypeError(`${proto} is not a object`)
+    }else {
+      function F() {
+
+      }
+      // F.prototype = {...proto}
+      // F.prototype = JSON.parse(JSON.stringify(proto))
+      
+      // F.prototype = proto
+      F.prototype = Object.assign({}, proto)
+      return new F()
+    }
+  }
+}
+
+function TT() {
+  
+}
+
+TT.prototype.say = function () {
+  console.log(' i am TT')
+}
+
+TT.prototype.name = 'TT'
+function EE() {
+
+}
+ EE.prototype = Object.myCreate(TT.prototype)
+ EE.prototype.name = "EE"
+
+let mm = new EE()
+
+let nn = new TT()
+
+TT.prototype.name = "GG"
+
+
+console.log(mm, mm.name, nn, EE, TT)
