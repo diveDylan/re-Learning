@@ -16,43 +16,53 @@ function curry1(x) {
 // curry1(1)(2)(3)
 
 
-// 优化 curry
-function curry(func, arrArgs) {
-  var args=arguments;
-  var length = func.length;
-  var arrArgs = arrArgs || [];
-  console.log('arrArgs:', arrArgs, func.length, 'args:', args)
-  return function() {
-      var _arrArgs = Array.prototype.slice.call(arguments);
-      var allArrArgs=arrArgs.concat(_arrArgs)
-      console.log('fnarrArgs:',  allArrArgs,  _arrArgs)
-      // 如果参数个数小于最初的func.length，则递归调用，继续收集参数
-      if (allArrArgs.length < length) {
-          return args.callee.call(this, func, allArrArgs);
-      }
-
-      // 参数收集完毕，则执行func
-       // 参数收集完毕，则执行func
-       return func.apply(this, allArrArgs);
-  }
-
-
-}
-
-
-
-// function curry2(fn, ...arg) {
-//   let all = arg || [],
-//       length = fn.length;
-//   return (...rest) => {
-//       let _args = all.slice(0); //拷贝新的all，避免改动公有的all属性，导致多次调用_args.length出错
-//       _args.push(...rest);
-//       if (_args.length < length) {
-//           return curry2.call(this, fn, ..._args);
-//       } else {
-//           return fn.apply(this, _args);
+// // 优化 curry
+// const curry = ( fn, arr = []) => {
+  
+//   return (...args) => { 
+//       if(args.length === 0) {
+//         return fn(...arr)
 //       }
+//       //判断参数总数是否和fn参数个数相等
+//       arr.concat(args.slice())
+//       console.log('arr',arr, 'args',args)
+      
+//       return curry(fn,[...arr, ...args]) //迭代，传入现有的所有参数
+      
+
 //   }
 // }
+// const test = curry(function() {
+//   let sum = [...arguments].reduce(add)
+//   console.log(sum)
+// })
 
-console.log(curry(add)(1)(2)(3)(4))
+// console.log(test(1,2)(3)(4)(5)()) 
+//根据fn个数curry
+//  function curryLength(fn, arr=[]) {
+//   return function (...args) {
+//     let _arr = arr.concat(args)
+//     console.log('arr:', arr, args, _arr)
+//     if(_arr.length == fn.length) {
+//       return fn(..._arr)
+//     }else {
+//       return curryLength(fn, _arr)
+//     }
+//   }
+// }
+const curryLength = (fn, arr=[]) => (...args) => arr.concat(args).length === fn.length ? fn(...arr.concat(args)) : curryLength(fn, arr.concat(args)) 
+function addLength (a,b,c,d)  {
+  console.log('test', a,b,c,d)
+  console.log( a + b + c + d)
+  return a + b + c + d
+}
+// const testLength = curryLength(addLength)
+// testLength(1)(2)(3)(4)
+
+const curry = (fn, arr=[]) =>
+  (...args) => 
+    args.length === 0 ? fn(arr.concat(args)) :
+    curry(fn, arr.concat(args))
+
+
+console.log(curry((arguments) => arguments.reduce(add))(1)(2)(3)(4)(5)())
