@@ -23,11 +23,11 @@ function replace(str,reg, repS='11') {
  <table style="backgroud: #f6f4f0" >
   <h4 style="text-align:center;background:#555">常用元字符</h4>
   <tr>
-    <td>代码</td>
+    <td >代码</td>
     <td>说明</td>
   </tr>
   <tr>
-    <td>.</td>
+    <td >.</td>
     <td>匹配除换行符以外的任意字符</td>
   </tr>
   <tr>
