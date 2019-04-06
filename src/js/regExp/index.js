@@ -44,6 +44,26 @@ replace('dylan learn js', /n$/g)// dylan learn js
 replace('dylan learn js', /js$/g)// dylan learn 11
 
 replace('dylan learning js', /n\b/g) // dyla11 learning js
-//
-replace('https://anlink-admin.anlink.com/api/consult/submit', )
+
+
+// 匹配数字次数
+replace('949440946@qq.com', /\d*/, 'qq***')
+replace('@qq.com', /\d*/, 'qq***')
+
+
+// 捕获位置
+
+replace('name is 2dylan', /(\d)(?=dylan)/, '$1Zeng')
+
+// 如何捕获多次
+
+replace('name is 2dylan, 2dylan like U',/(\d)(?=dylan)/g, '2Zeng')
+replace('3dylandylandylan',/(?=dylan)+/, 'Zeng,')
+
+// we test formatNum
+
+replace('949440946', /(\d{3})/g, '$1,') // 949, 440, 946
+
+// 多一位 不行，我们改造下
+replace('1111949440946', /\B(?=(\d{3})+$)/g, ',') // 949, 440, 946
 

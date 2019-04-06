@@ -125,5 +125,7 @@ str.myReplace(/(\w+)\,(\w+)/g, "$1:$2")//name:dylan;age:22;gender:male
 // 常用部分 /api代理重写转发
 const targetUrl = 'https://github.com'
 'http://localhost:8080/api/dylan921208'.myReplace(/(.+)(\/api\/)/,`${targetUrl}`)
+<!-- 改进下 -->
+'http://localhost:8080/api/dylan921208'.myReplace(/^.+api/,`${targetUrl}`)
 
 ```
