@@ -61,3 +61,6 @@ function copyArr(arr) {
 ## isArray
 > 是不是数组的判断
 [一些例子和polyfill](./isArray/Readme.md)
+
+
+## reduce
