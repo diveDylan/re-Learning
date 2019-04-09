@@ -19,7 +19,6 @@ arr.mySplice(6,0,6,7,8)//[] [1, 2, 3, 4, 5, 6, 7, 8]
 function myConcat(arr) {
   // 转为数组
   let args = Array.prototype.splice.call(arguments,1)
-
   // es6
   console.log('arg',arguments,args )
   args = args.flat(1)
