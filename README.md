@@ -6,11 +6,11 @@
 
 > 起服务 python -m SimpleHTTPServer 8081
 
-# 目录
-## [正则基础](./src/regExp/Readme.md)
+# JS目录
+## [正则基础](./src/js/regExp/Readme.md)
 > 匹配元字符，转义，限定字符，捕获
 
-## [正则秒用](./src/regExp/skill.md)
+## [正则秒用](./src/js/regExp/skill.md)
 > 数字格式化，过滤敏感字，去除空项
 
 ## [数组方法](./src/js/array/Readme.md)
