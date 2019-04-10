@@ -1,4 +1,4 @@
-var json = {
+const json = {
   a: 1,
   b: 2,
   c: '',
@@ -6,15 +6,16 @@ var json = {
   e: 22,
   f: null
 }
-//  去除空项null, ""
 
-let str = JSON.stringify(json)
+// 正则的处理方式
+//  去除空项null, ""
 // key的命名支持数字字母下划线汉字
-let result = str
+let result = JSON.stringify(json)
   .replace(/\"\"/g, null)
   .replace(/\"([\u4E00-\u9FA5A-Za-z0-9_]+)\"\:null\,?/g, '')
-console.log(result)
+let newJson = JSON.parse(result)
 
+// 非正则处理方式
 function isObject(ob) {
   return typeof ob === 'object'
 }
@@ -31,3 +32,5 @@ function getNonObject(ob) {
 
   return ob
 }
+
+// 过滤敏感字，并显式同等长度的*

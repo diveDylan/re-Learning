@@ -21,6 +21,7 @@ console.log(brr.reduce((a,b) => a.concat(b) ))
 
 // here also flat polyfill
 if(!Array.prototype.myFlat) {
+  // step= 1 because concat get result flat(1)
   function reduceByDepth(arr, depth, step=1) {
     return  arr.reduce((a,b) => {
       return Array.isArray(b) && step < depth ? a.concat(reduceByDepth(b, depth, step + 1)) : a.concat(b)
@@ -57,7 +58,7 @@ const list =[
   {id:5, status: '00'},
 ]
 
-
+list.reduce((a,b) => a.concat(b.status), [])
 console.log(list.reduce((a,b) => a.concat(b.status), []))
 
 // 根据状态分组
