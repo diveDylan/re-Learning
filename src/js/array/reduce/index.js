@@ -21,10 +21,8 @@ console.log(brr.reduce((a,b) => a.concat(b) ))
 
 // here also flat polyfill
 if(!Array.prototype.myFlat) {
-  function reduceByDepth(arr, depth, step=0) {
-    console.log(depth, step)
+  function reduceByDepth(arr, depth, step=1) {
     return  arr.reduce((a,b) => {
-      console.log(a,b)
       return Array.isArray(b) && step < depth ? a.concat(reduceByDepth(b, depth, step + 1)) : a.concat(b)
     },[])
  
@@ -47,3 +45,65 @@ if(!Array.prototype.myFlat) {
 
 brr.myFlat()
 crr.myFlat()
+crr.myFlat(2)
+
+// 过滤出一个对象status组成的数组
+
+const list =[
+  {id:1, status: '00'},
+  {id:2, status: '01'},
+  {id:3, status: '02'},
+  {id:4, status: '01'},
+  {id:5, status: '00'},
+]
+
+
+console.log(list.reduce((a,b) => a.concat(b.status), []))
+
+// 根据状态分组
+let groupStatus = list.reduce((a,b) => {
+  if(!a[b.status]) {
+    a[b.status] = []
+  }
+   a[b.status].push(b)
+  return a
+}, {})
+console.log(groupStatus)
+// 计算数组项重复的次数
+
+const repeatArr = ['dylan', 'kim', 'carle', 'kate', 'dylan', 'kate', 'kim','kim']
+
+let countJson = repeatArr.reduce((a,b) => {
+  if(a[b]) {
+    a[b]++
+  }else {
+    a[b] = 1
+  }
+  return a
+}, {})
+
+// no repeat
+let noRepeat = repeatArr.reduce((a,b) => a.includes(b) ? a : a.concat(b),[])
+console.log(countJson,noRepeat)
+
+// 管道函数 pipe function
+
+const add = (x) => x  + 1
+const double = (x) => x * x
+const cut = (x) => x - 1
+
+const pipe = (x) => y => x(y)
+
+console.log(pipe(add)(2)) // 3
+console.log(pipe(double)(2)) // 4
+console.log(pipe(cut)(2)) // 1
+
+const compose = (...args) => input => args.reduce((a,b) => b(a), input )
+const addDouble = compose(add, double)
+const addCut = compose(add, cut)
+const doubleCut = compose(double, cut)
+const all = compose(add, double, cut)
+console.log(addDouble(2)) // 9 
+console.log(addCut(2)) // 2
+console.log(doubleCut(2)) // 3
+console.log(all(2)) // 8

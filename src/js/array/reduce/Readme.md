@@ -42,3 +42,102 @@ arr.reduce((a,b,c,d) => {
 * 有初始值执行顺序
 ![有初始值执行顺序](../../../../static/img/reduceWithInitValue.png)
 
+
+# 一些高级函数和polyfill
+* flat
+```
+// here also flat polyfill
+if(!Array.prototype.myFlat) {
+  function reduceByDepth(arr, depth, step=1) {
+    return  arr.reduce((a,b) => {
+      return Array.isArray(b) && step < depth ? a.concat(reduceByDepth(b, depth, step + 1)) : a.concat(b)
+    },[])
+ 
+  }
+  Object.defineProperty(Array.prototype, 'myFlat', {
+    value: function(depth = 1) {// set default depth
+      const arr = []
+      let o = Object(this)
+      // 转为正数数字
+      let len = this.length >>> 0
+      if(len < 1) return arr
+      else {
+        console.log(reduceByDepth(o,depth))
+        return reduceByDepth(o,depth)
+      }
+
+    }
+  })
+}
+
+```
+
+* 引入类型项的操作
+
+```
+// 过滤出一个对象status组成的数组
+
+const list =[
+  {id:1, status: '00'},
+  {id:2, status: '01'},
+  {id:3, status: '02'},
+  {id:4, status: '01'},
+  {id:5, status: '00'},
+]
+
+list.reduce((a,b) => a.concat(b.status), [])
+// 根据状态分组
+let groupStatus = list.reduce((a,b) => {
+  if(!a[b.status]) {
+    a[b.status] = []
+  }
+   a[b.status].push(b)
+  return a
+}, {})
+
+
+```
+
+* 重复类
+
+```
+<!-- 计算重复的次数 -->
+const repeatArr = ['dylan', 'kim', 'carle', 'kate', 'dylan', 'kate', 'kim','kim']
+
+let countJson = repeatArr.reduce((a,b) => {
+  if(a[b]) {
+    a[b]++
+  }else {
+    a[b] = 1
+  }
+  return a
+}, {})
+<!-- 去重 -->
+let noRepeat = repeatArr.reduce((a,b) => a.includes(b) ? a : a.concat(b),[])
+
+```
+* pipe & compose 
+```
+// 管道函数 pipe function
+
+const add = (x) => x  + 1
+const double = (x) => x * x
+const cut = (x) => x - 1
+
+const pipe = (x) => y => x(y)
+
+console.log(pipe(add)(2)) // 3
+console.log(pipe(double)(2)) // 4
+console.log(pipe(cut)(2)) // 1
+
+const compose = (...args) => input => args.reduce((a,b) => b(a), input )
+const addDouble = compose(add, double)
+const addCut = compose(add, cut)
+const doubleCut = compose(double, cut)
+const all = compose(add, double, cut)
+console.log(addDouble(2)) // 9 
+console.log(addCut(2)) // 2
+console.log(doubleCut(2)) // 3
+console.log(all(2)) // 8
+
+```
