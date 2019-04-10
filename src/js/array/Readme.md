@@ -64,3 +64,10 @@ function copyArr(arr) {
 
 
 ## reduce
+> 根据提供reducer函数进行升序执行，并将结果汇总成一个值返回
+
+具体内容[reduce 学习](./reduce/Readme.md)：
+* 基本语法
+* 执行顺序
+* 高级函数
+* flat polyfill
