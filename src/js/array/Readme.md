@@ -77,3 +77,8 @@ function copyArr(arr) {
 > push 方法在数组尾部增加一个或者多个元素，并返回数组的长度，改变原数组
 
 > 在array-like object 中使用push
+
+
+## from
+
+> 通过一个可迭代的对象或者array-like object创建一个数组(浅拷贝)
