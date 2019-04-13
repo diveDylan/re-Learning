@@ -6,6 +6,8 @@
 
 > 起服务 python -m SimpleHTTPServer 8081
 
+#### [media -- video自动播放]('https://github.com/gnipbao/iblog/issues/25')
+
 # JS目录
 ## [正则基础](./src/js/regExp/Readme.md)
 > 匹配元字符，转义，限定字符，捕获

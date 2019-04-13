@@ -71,3 +71,9 @@ function copyArr(arr) {
 * 执行顺序
 * 高级函数
 * flat polyfill
+
+
+## [push](./push/Readme.md)
+> push 方法在数组尾部增加一个或者多个元素，并返回数组的长度，改变原数组
+
+> 在array-like object 中使用push

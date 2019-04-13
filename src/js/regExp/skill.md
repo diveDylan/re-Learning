@@ -57,7 +57,9 @@ const content = '132sbsadasdadsacaosdakaofucksdsdasdasdasbsdsadasddkaonimasdsada
 const notAllowedWords = ['sb', 'cao', 'kao','mabi', 'nima']
  
 content.replace( new RegExp(notAllowedWords.join('|'), 'g'), function(match) {
-    return new Array(match.length).fill('*').join('')
+  // 这里有个复杂度的问题，暂时不知道这两个写法哪个方便些
+    <!-- return new Array(match.length).fill('*').join('') -->
+    return String.prototype.repeat.call('*')
 })
 <!-- 非正则写法 -->
 notAllowedWords.map((item)=>{
