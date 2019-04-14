@@ -29,11 +29,9 @@ let dylan = {
 
 let dylanProxy = new Proxy(dylan, {
   get(target, prop) {
-    // if(prop === 'age' && !Number.isInteger(target[prop])) {
-    //   throw new Error('age is number')
-    // }
     return target[prop]
   },
+  // 拦截代理对象的set
   set(target, prop, value) {
     // console.log(target, prop, value)
     if(prop === 'age' && !Number.isInteger(value)) {
@@ -43,10 +41,10 @@ let dylanProxy = new Proxy(dylan, {
     return true
   }
 })
-
+/**handler的trap并不作用于原对象 */
 dylan.age = 'twenty'
-console.log( dylan.age)
-console.log( dylanProxy.age)
+console.log( dylan.age) //  'twenty'
+console.log( dylanProxy.age) // 'twenty'
 dylanProxy.age = 'twenty'
 console.log(dylanProxy.age,)
 

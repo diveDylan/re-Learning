@@ -1,7 +1,8 @@
 # 定义
 
 > proxy 是js的内置对象, 用于自定义代理对象的基本操作(如属性查找，赋值，枚举，函数调用等)<br/>
-> **原则上对象代理后，不要直接在原对象上进行操作，所有操作都应该通过代理完成，保证所有操作都经过handler的trap**
+> **原则上对象代理后，不要直接在原对象上进行操作，所有操作都应该通过代理完成，保证所有操作都经过handler的trap** ***因为handler的trap并不作用于原对象***
+
 # Syntax
  
 > new Proxy(target, handler)
@@ -57,5 +58,34 @@ console.log(proxy.b, obj.b); // b, b
 
 
 
-## 
+## handler
+ handler的traps不作用于原对象
+```
+// validate
+
+let dylan = {
+  age: 22,
+  name: 'dylan'
+}
+
+let dylanProxy = new Proxy(dylan, {
+  get(target, prop) {
+    return target[prop]
+  },
+    // 拦截代理对象的set
+  set(target, prop, value) {
+    // console.log(target, prop, value)
+    if(prop === 'age' && !Number.isInteger(value)) {
+      throw new Error('age is number')
+    }
+    target[prop] = value
+    return true
+  }
+})
+/**handler的trap并不作用于原对象 */
+dylan.age = 'twenty'
+console.log( dylan.age) //  'twenty'
+console.log( dylanProxy.age) // 'twenty'
+
+```
 
