@@ -2,7 +2,7 @@
 
 > proxy 是js的内置对象, 用于自定义代理对象的基本操作(如属性查找，赋值，枚举，函数调用等)<br/>
 > **原则上对象代理后，不要直接在原对象上进行操作，所有操作都应该通过代理完成，保证所有操作都经过handler的trap** ***因为handler的trap并不作用于原对象***
-
+> 提供了js元编程的能力
 # Syntax
  
 > new Proxy(target, handler)
@@ -23,14 +23,16 @@
 * target
    > 代理的虚拟对象。常用于在后面储存代理对象.根据目标验证关于对象不可扩展性或不可配置属性的不变量（保持不变的语义）
 
+# 原型属性
+
+<img src="../../../static/img/proxyProperty.png" width="500">
+
 # methods
 [Proxy.revocable(target, handler)](./revocable/Readme.md);
 
 <img src="../../../static/img/revocableProxy.png" width="800">
 
-# 原型属性
 
-<img src="../../../static/img/proxyProperty.png" width="500">
 
 # examples
 
@@ -74,7 +76,7 @@ let dylanProxy = new Proxy(dylan, {
   },
     // 拦截代理对象的set
   set(target, prop, value) {
-    // console.log(target, prop, value)
+    console.log('proxy setting')
     if(prop === 'age' && !Number.isInteger(value)) {
       throw new Error('age is number')
     }
@@ -86,6 +88,9 @@ let dylanProxy = new Proxy(dylan, {
 dylan.age = 'twenty'
 console.log( dylan.age) //  'twenty'
 console.log( dylanProxy.age) // 'twenty'
-
+dylanProxy.age = 22 // proxy setting 1次
 ```
 
+* **[hanlder.apply](./apply/Readme.md)**
+
+     函数调用的陷阱

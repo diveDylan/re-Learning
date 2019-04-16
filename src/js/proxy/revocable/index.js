@@ -8,9 +8,11 @@ let reProxy = Proxy.revocable(obj,{
     }
   }
 })
+
+console.log(reProxy.revoke, new Proxy({b: 1}, {}))
 // reProxy.proxy 访问属性代理对象
 console.log(reProxy, reProxy.proxy.a,obj.a, typeof reProxy)
-//取消代理 set reProxy.proxy.IsRevoked: true, 将无法
+//取消代理 set reProxy.proxy.IsRevoked: true, 将无法使用typeof delete
 reProxy.revoke()
 
 console.log(reProxy, reProxy.proxy)

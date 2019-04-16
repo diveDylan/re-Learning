@@ -33,7 +33,7 @@ let dylanProxy = new Proxy(dylan, {
   },
   // 拦截代理对象的set
   set(target, prop, value) {
-    // console.log(target, prop, value)
+    console.log('proxy setting')
     if(prop === 'age' && !Number.isInteger(value)) {
       throw new Error('age is number')
     }
@@ -45,6 +45,6 @@ let dylanProxy = new Proxy(dylan, {
 dylan.age = 'twenty'
 console.log( dylan.age) //  'twenty'
 console.log( dylanProxy.age) // 'twenty'
-dylanProxy.age = 'twenty'
+dylanProxy.age = '2a'
 console.log(dylanProxy.age,)
 
