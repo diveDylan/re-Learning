@@ -79,7 +79,10 @@ function copyArr(arr) {
 > 在array-like object 中使用push
 
 
-## [from](./fill/Readme.md)
+## [from](./from/Readme.md)
 
 > 通过一个可迭代的对象或者array-like object创建一个数组(浅拷贝)
 
+## [map](./map/Readme.md)
+
+> map()方法创建一个新的数组，并且在原数组每个元素上上调用回调函数, 不改变原数组

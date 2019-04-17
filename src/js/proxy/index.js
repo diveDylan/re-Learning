@@ -41,10 +41,30 @@ let dylanProxy = new Proxy(dylan, {
     return true
   }
 })
+let dylanRef = new Proxy(dylan, {
+  get(target,prop) {
+    return Reflect.get(target, prop)
+  },
+  set(target, prop, value) {
+    return Reflect.set(target, prop, value)
+  }
+})
 /**handler的trap并不作用于原对象 */
 dylan.age = 'twenty'
+dylanProxy.age = 20
+dylanRef.age = 21
 console.log( dylan.age) //  'twenty'
-console.log( dylanProxy.age) // 'twenty'
-dylanProxy.age = '2a'
-console.log(dylanProxy.age,)
+console.log( dylanProxy.age,dylanProxy.name) // 'twenty'
+console.log(dylanRef.age, dylanRef.name)
+// dylanProxy.age = '2a'
+// console.log(dylanProxy.age,)
+
+/**
+ * 实现一个不影响的proxy
+ */
+
+
+
+
+
 
