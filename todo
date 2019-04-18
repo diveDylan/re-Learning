@@ -2,4 +2,10 @@
 ✔ 2、柯里化函数 @high @done(19-04-03 21:06)
 ☐ 3、观察者模式、发布订阅模式 @high   
 ☐ 4、你不知道的js阅读 @high 
+
+☐ 5、 proxy部分
+   ☐ a.对apply可拦截情况的理解
+   ☐ b.元编程的应用
+   ☐ c.proxy的应用目的和场景
+   ☐ d.construct可拦截情况的理解
     -- read book

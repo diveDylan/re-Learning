@@ -3,10 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Re-Learning</title>
+  <style>
+    .dn {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <iframe src="./video.html"  allow = "autoplay" width="1000" height="1000"></iframe>
+    <video  width="1000" height="500" controls loop src="http://horizon-mall-test.oss-cn-hzfinance.aliyuncs.com/lottery-mini-test/e2996faeb80a8f19970572a684a549ab.mp4"></video>
+    <button > trigger</button>
+  <!-- <iframe src="./video.html"  allow = "autoplay" width="1000" height="1000"></iframe> -->
 </body>
 <script src="/src/js/proxy/apply/index.js"> </script>
+<script>
+/**
+ * test video js
+ */
+var btn = document.querySelector('button')
+var vid = document.querySelector('video')
+btn.onclick = function() {
+  vid.className = vid.className ? '' : 'dn'
+  vid.muted = !!vid.className 
+  if(vid.className) {
+    vid.pause()
+  }else {
+    
+    vid.play()
+  }
+}
+</script>
 </html>
 
