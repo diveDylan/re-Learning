@@ -11,8 +11,8 @@ const nullObject = new Proxy(Object, {
     return a
   },
   setPrototypeOf() {
-    console.log(';setting')
-    // return null
+    console.log('setting')
+    // cannot set the nullObject properties
     throw new Error("nullObject's prototype cannot set")
   },
   getPrototypeOf() {
@@ -20,7 +20,7 @@ const nullObject = new Proxy(Object, {
   },
 
 })
-
+Object.setPrototypeOf(nullObject, { name: null}) // throw a error
+console.log(Object.getPrototypeOf(nullObject) === null) //true
 let d = new nullObject({name:'dylan',age:18})
 console.log(d)
-d.isPrototypeOf.name = 'nullObject'
