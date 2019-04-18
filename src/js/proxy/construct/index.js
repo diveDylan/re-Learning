@@ -2,16 +2,17 @@
 
 const nullObject = new Proxy(Object, {
   construct(target, args, newTarget){
-    const proto = Object.create(null)
-    let f = new target()
-    f.prototype = proto
     console.log('target:',target)
     console.log('args:',args)
     console.log('newTarget:',newTarget)
-    return f
+    let a = Object.create(null)
+    // 如果传入object的情况
+    args.forEach(i => Object.assign(a,i))
+    return a
   },
   setPrototypeOf() {
-    // cannot set properties
+    console.log(';setting')
+    // return null
     throw new Error("nullObject's prototype cannot set")
   },
   getPrototypeOf() {
@@ -20,4 +21,6 @@ const nullObject = new Proxy(Object, {
 
 })
 
-let d = new nullObject()
+let d = new nullObject({name:'dylan',age:18})
+console.log(d)
+d.isPrototypeOf.name = 'nullObject'

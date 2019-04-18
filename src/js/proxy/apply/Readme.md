@@ -26,6 +26,6 @@ new Proxy(target, {
 # 用法
 可拦截这些的操作
 * proxy(...args)代理函数的执行
-* Function.prototype.apply() & call()
-* Reflect.apply()
+* Function.prototype.apply() & call() 代理函数的call& apply
+* Reflect.apply()反射执行的代理函数
 

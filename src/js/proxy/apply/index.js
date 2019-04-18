@@ -75,3 +75,6 @@ const proxyName = new Proxy(logName, handlerCall)
 proxyName(window) // 'window'
 proxyName.call(window) // {name: 'new' }
 proxyName.apply(window)// {name: 'new' }
+
+// 这里的proxy拦截应该是指proxy代理的函数
+Reflect.apply(proxyName, null, [window])

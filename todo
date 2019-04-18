@@ -4,7 +4,7 @@
 ☐ 4、你不知道的js阅读 @high 
 
 ☐ 5、 proxy部分
-   ☐ a.对apply可拦截情况的理解
+   ✔ a.对apply可拦截情况的理解 @done(19-04-18 16:54)
    ☐ b.元编程的应用
    ☐ c.proxy的应用目的和场景
    ☐ d.construct可拦截情况的理解
