@@ -59,9 +59,7 @@ console.log(dylanRef.age, dylanRef.name)
 // dylanProxy.age = '2a'
 // console.log(dylanProxy.age,)
 
-/**
- * 实现一个不影响的proxy
- */
+
 
 
 
