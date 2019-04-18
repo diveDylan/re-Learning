@@ -17,5 +17,5 @@
 <img src="../../../../static/img/revocableProxy.png" width="800">
 
 
-
+***只有对RevocableProxy.proxy的操作才会进入handler陷阱*** 
 
