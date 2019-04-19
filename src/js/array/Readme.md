@@ -86,3 +86,8 @@ function copyArr(arr) {
 ## [map](./map/Readme.md)
 
 > map()方法创建一个新的数组，并且在原数组每个元素上上调用回调函数, 不改变原数组
+
+
+## [join](./join/Readme.md)
+
+> map()方法创建一个新的数组，并且在原数组每个元素上上调用回调函数, 不改变原数组
