@@ -90,4 +90,4 @@ function copyArr(arr) {
 
 ## [join](./join/Readme.md)
 
-> map()方法创建一个新的数组，并且在原数组每个元素上上调用回调函数, 不改变原数组
+> join方法创建并返回一个根据指定分隔字符串联的新字符串，可作用于数组和array-like object
