@@ -15,7 +15,7 @@ let proxyDy = new Proxy(Dylan, {
   get: function(target, prop, recevier) {
     console.log(this, 'getting')
     console.log(target, prop, recevier)
-    if(prop === 'gender') return 'female'
+    // if(prop === 'gender') return 'female'
     return Reflect.get(target, prop, recevier)
   },
   set: function(target, prop, val) {
