@@ -33,3 +33,80 @@ function foo(a) {
 foo(2) // a的Lhs： a = 2
  
 ```
+
+### 闭包和作用域的妙用
+
+> 思想: 最低权限规则(最少曝光， 最低授权)， 这意味着你只需要暴露最低限度的接口，隐藏你的内部实现过程，组件、插件等设计思想，私有变量
+
+```
+<!-- i only need invoke getMoney methods no need to care about the card, the bank -->
+function getMoney() {
+  function getCard() {
+    
+  }
+  function goBank() {
+
+  }
+  getCard()
+  goBank()
+}
+
+```
+
+> IIFE(Immediately Invoked Function Expression) 立即调用函数 (fn() { 不会污染的作用域})()
+
+```
+var name = 'dylan' // global data 
+(function log(obj) {
+  var a = 1
+  console.log(a) // 不污染的局部变量
+  console.log(obj.name) // 可传参
+})({name: 'd'})
+
+```
+
+> 块作用域与垃圾回收，代码重构
+* **首先明确的代码块风格比隐晦或微妙的代码块好，明确的代码块便于模块化和重构以及在其他语言中使用**
+
+```
+<!-- examples if的污染外部作用域 -->
+// ❎bad 
+if(true) {
+  var a = 1
+}
+console.log(a) // if{}块作用域下，由于var的变量提升导致作用于污染
+
+// ✅ good 
+<!-- let 关键字将变量声明附着在它所在的任何块儿, 不会有变量提升 -->
+if(true) {
+  let a = 1 // 生成局部作用域块
+}
+console.log(a) // ReferenceError
+
+<!-- 明确的块 -->
+{
+  let name = 'dylan'
+  const gender = 'male'
+}
+```
+* 垃圾回收
+
+```
+function search(query) {
+  // query actions
+}
+<!-- ❎ ->
+let query = { id: '123' }
+search(query)
+<!-- ✅运行之后即消失,明确的行为可以告知引擎垃圾回收执行时机为块执行结束 -->
+{
+  let query = { id: '123'}
+  search(query)
+}
+
+```
+
+**但是现在主流的代码风格已经有了一种共识，块作用域的写法会增加一定阅读性难度**
+
+
+
