@@ -17,7 +17,21 @@
       */
   ```
 
-  <img src="./static/img/ASTVarA=2.png" width="300">
+  <img src="./static/img/ASTVarA=2.png" width="300"> <br/>
+  **[为了更清楚的说明这种编译器模式：先声明标量再赋值,变量提升了，赋值和其他逻辑操作仍保留在原位](./声明提升.md)**严格的说针对当前作用域的提升
+  ```
+  <!-- examples first-->
+  a = 2;
+  var a; 
+  console.log(a) // 实际输出的是2： 1、var a -->声明提升； 2、 a = 2 --> 赋值  3、console.log(a)
+
+  <!-- exmaples second -->
+  console.log(a)
+  var a;
+  a = 2;
+  // output undefined: 1、var a --> 变量提升; 2、console.log(a); 3、 a = 2
+
+  ```
 
 ### LHS查询和RHS查询
 * LHS(Left-hand Side):变量出现在赋值操作的左手边，即被赋值
@@ -107,6 +121,5 @@ search(query)
 ```
 
 **但是现在主流的代码风格已经有了一种共识，块作用域的写法会增加一定阅读性难度**
-
 
 
