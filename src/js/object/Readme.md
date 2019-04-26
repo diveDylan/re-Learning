@@ -13,3 +13,10 @@
 * [Object.prototype.toString](./toString/Readme.md)
 
 * [Object.prototype.keys](./keys/Readme.md)
+
+```
+<!-- deep clone 解决引用地址对clone的影响 -->
+function deepClone(obj) {
+
+}
+```

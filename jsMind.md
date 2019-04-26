@@ -68,6 +68,7 @@ function getMoney() {
 ```
 
 > IIFE(Immediately Invoked Function Expression) 立即调用函数 (fn() { 不会污染的作用域})()
+ * 立即调用函数表达式可以令其函数中声明的变量绕过JavaScript的变量置顶声明规则，还可以避免新的变量被解释成全局变量或函数名占用全局变量名的情况。与此同时它能在禁止访问函数内声明变量的情况下允许外部对函数的调用
 
 ```
 var name = 'dylan' // global data 
