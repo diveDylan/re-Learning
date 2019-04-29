@@ -1,4 +1,4 @@
-# 支付宝小程序learning
+# 支付宝小程序learning（调研阶段）
 
 > [官方文档](https://docs.alipay.com/mini/developer/getting-started)
 
@@ -92,4 +92,9 @@ Page({
 });
 
  ```
+
+ ### 页面跳转
+ **my.navigateTo**
+ 保留当前页， 跳转到其他页面，相当于新开页面，最大深度为10
+
  
