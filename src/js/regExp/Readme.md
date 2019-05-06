@@ -11,7 +11,13 @@
  >/hi/g 会匹配所有hi，不仅仅包括hi的单词;如果只查找hi这个单词，应该试用\bhi\b
 
 # flags
-`i``g``m``y``u`
+* `i`: ignoreCase忽略大小写 
+* `g`: global全部匹配
+* `m`: multiline，^ $忽略换行符
+* `y`: sticky
+* `u`: unicode 使用 "u" 标志，任何 Unicode 代码点的转义都会被解释。
+
+
 
 ```
 <!-- test 函数 -->
