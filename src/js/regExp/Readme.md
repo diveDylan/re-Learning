@@ -7,7 +7,14 @@
  简单的说正则就是文本匹配工具
 
  # 入门
- 
+ 正则的定义方式
+ ```
+/pattern/flags
+new RegExp(pattern[, flags])
+RegExp(pattern[, flags])
+
+ ```
+ **三种方式创建的正则互不相等**
  >/hi/g 会匹配所有hi，不仅仅包括hi的单词;如果只查找hi这个单词，应该试用\bhi\b
 
 # flags

@@ -12,9 +12,37 @@
 <body>
     <video  width="1000" height="500" controls loop src="http://horizon-mall-test.oss-cn-hzfinance.aliyuncs.com/lottery-mini-test/e2996faeb80a8f19970572a684a549ab.mp4"></video>
     <button > trigger</button>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    
+    <script>
+    // Demo 1
+    // var ul = document.querySelectorAll('ul')[0],
+    //     lis = ul.querySelectorAll("li");
+    // for(var i = 0; i < 5 ; i++){
+    //     ul.appendChild(document.createElement("li"));
+    // }
+    
+    // console.log(lis) //5
+    
+    // Demo 2
+    var ul = document.getElementsByTagName('ul')[0],
+        lis = ul.getElementsByTagName("li");
+    for(var i = 0; i < 5 ; i++){
+        ul.appendChild(document.createElement("li"));
+    }
+    
+    console.log(lis) //5+2
+    
+    </script>
   <!-- <iframe src="./video.html"  allow = "autoplay" width="1000" height="1000"></iframe> -->
 </body>
-<script src="/src/js/regExp/multiline/index.js"> </script>
+<script src="/src/js/regExp/exec/index.js"> </script>
 <script>
 /**
  * test video js
