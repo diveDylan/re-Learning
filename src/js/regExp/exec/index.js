@@ -10,16 +10,24 @@ let e = regG.exec('a1a2a3') // ["a", index: 4, input: "a1a2a3", groups: undefine
 console.log(c,d,e)
 // 分组的情况
 
-const regGroup = /(a)\d+(b)/g
+const regGroup = /(a)\d?(b)/g
 
-const f = regGroup.exec('a1b1a2b2a3b3') // ["a1b", "a", "b", index: 0, input: "a1b1a2b2a3b3", groups: undefined] 
+
+const f = regGroup.exec('a1b1a2b2a3b3')
+ // ["a1b", "a", "b", index: 0, input: "a1b1a2b2a3b3", groups: undefined] 
+let string = 'a1b1a2b2a3b3'
+console.log(string.match(regGroup)) // ["a1b", "a2b", "a3b"]
+
+console.log(string.replace(regGroup, 're')) // re1re2re3
+
+let strArray = [...string.matchAll(regGroup) ]
 const g = regGroup.exec('a1b1a2b2a3b3') //  ["a2b", "a", "b", index: 4, input: "a1b1a2b2a3b3", groups: undefined]
 console.log(f,g)
 
 
 // compare with String.prototype.matchAll
 
-let string = 'a1b1a2b2a3b3'
-let strResult = string.matchAll(regGroup) // RegExpStringIterator 
-let strArray = [...strResult]
-console.log( strResult, strArray)
+
+ // RegExpStringIterator 
+
+console.log( strArray)

@@ -28,3 +28,41 @@ const g = regGroup.exec('a1b1a2b2a3b3') //  ["a2b", "a", "b", index: 4, input: 
 ```
 由此可以总结出result返回结果的数组格式<br/>
 <img src="../../../../static/img/regExpExec.png" style="width: 800px">
+
+理解index和正则本身的关系
+下面的代码输出为？
+
+```
+// 分组的情况
+const str = 'a1b1a2b2a3b3'
+const regGroup = /(a)\d+(b)/g
+
+const f = regGroup.exec(str) 
+const g = regGroup.exec(str) 
+
+const h = [...str.matchAll(regGroup)]
+
+console.log(h)
+```
+在控制台运行后输出:`[["a3b", "a", "b", index: 8, input: "a1b1a2b2a3b3", groups: undefined]]`，分解一边代码
+
+```
+const str = 'a1b1a2b2a3b3'
+const regGroup = /(a)\d+(b)/g
+/**
+* --> regGroup index = 3，下一次执行正则相关捕获操作将从下标3开始，包含如下
+* 正则操作：String.prototype.matchAll, RegExp.prototype.exec
+*/
+const f = regGroup.exec(str) // ["a1b", "a", "b", index: 0, input: "a1b1a2b2a3b3", groups: undefined]  
+
+//regGroup index = 7，下一次执行正则相关捕获操作将从下标7开始，
+const g = regGroup.exec(str) //  ["a2b", "a", "b", index: 4, input: "a1b1a2b2a3b3", groups: undefined]
+
+
+const h = [...str.matchAll(regGroup)] //[["a3b", "a", "b", index: 8, input: "a1b1a2b2a3b3", groups: undefined]]
+
+
+```
+
+
+
