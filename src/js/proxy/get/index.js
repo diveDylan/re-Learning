@@ -24,6 +24,6 @@ let proxyDy = new Proxy(Dylan, {
   }
 })
 
-proxyDy.gender
+proxyDy.gender = ''
 console.log(proxyDy.gender)
 console.log(proxyDy.name, Dylan.gender, proxyDy[Symbol('like')])
