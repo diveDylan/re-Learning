@@ -1,4 +1,12 @@
+const objectArr = [1,2,3]
 
+console.log(objectArr)
+
+Object.defineProperty(objectArr, 0, {
+  get() {
+  }
+})
+objectArr.map(i => console.log(i))
 if(!Array.prototype.myMap) {
   Array.prototype.myMap = function() {
     let a = Array.prototype.map.apply(this,arguments)
@@ -6,6 +14,22 @@ if(!Array.prototype.myMap) {
     return a
   }
 }
+/**
+ *  about callback invoke
+ *  assigned value  or non-assign
+ */
+
+const assignArr = new Array(6).fill()
+const nonAssigned = new Array(6)
+const assignedOne = new Array(6)
+assignedOne[0] = ''
+assignArr.map(i => {
+  console.log('assgin', i)
+})
+nonAssigned.map(i => {
+  console.log('nonAss', i)
+})
+assignedOne.map(i => console.log('one', i))
 const arr = [1, 2, 3]
 const brr = [3,3,4]
 // 传入thisArg不能使用箭头函数

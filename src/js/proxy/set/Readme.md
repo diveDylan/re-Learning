@@ -1,5 +1,5 @@
 # 定义
-`handler.set()`方法是set属性值得一个陷阱
+`handler.set()`方法是set属性值的一个陷阱
 
 # Syntax
 ```
@@ -13,8 +13,8 @@ var p = new Proxy(target, {
 `set`方法返回一个`Boolean`值，返回`true`表面赋值成功，`false`在严格模式下会报错
 
 * set无法监听数组项对象的set
-* set可以监听数组项的增加
-* set可以监听object的属性的增加
+* set可以监听数组项的增加，改变
+* set可以监听object的属性的增加,改变
 
 # Examples
 

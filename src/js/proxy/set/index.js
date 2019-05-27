@@ -1,3 +1,4 @@
+// use strict
 const arr = [ {name: 1}, {name: 2}, 3 ]
 
 const handler = {
@@ -5,7 +6,7 @@ const handler = {
     console.log('seting')
     return true
   }
-}
+} 
 
 const proxyArr = new Proxy(arr, handler)
 
@@ -38,10 +39,10 @@ const handlerFalse = {
     return false
   }
 }
-// use strict
 
-// const proxy = new Proxy(arr, handlerFalse)
-// proxy[5] =1
+
+const proxy = new Proxy(arr, handlerFalse)
+proxy[5] =1
 
 
 const obj = {

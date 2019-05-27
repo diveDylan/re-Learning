@@ -1,6 +1,7 @@
 # 定义
 > map()方法创建一个新的数组，并且在原数组每个元素上上调用回调函数, 不改变原数组
 
+
 # Syntax
 ```
 var new_array = arr.map(callbackFn[,thisArg])
@@ -15,7 +16,16 @@ var new_array = arr.map(callbackFn[,thisArg])
 */
 
 ```
-
+> callback is invoked only for indexes of the array which have assigned values, including undefined.
+只有数组项被声明或者赋值才会被执行`callback`
+```
+/**
+ *  Note: this implies an array of arrayLength empty slots, not slots with actual undefined values
+ *  assigned value  or non-assign
+ */
+const nonAssigned = new Array(6)
+nonAssigned.map(i => console.log(i))
+```
 # examples
 > 便于维护、理解、尊重js的编程语言设定，理论上对于引用类型的项的处理尽量使用forEach不用map
 
