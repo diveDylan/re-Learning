@@ -14,6 +14,10 @@ const curryES6 = (fn, arg=[]) => (...args) => [...args, ...arg].length === fn.le
 
 curryES6(add)(1)(2)(3)(4)
 
+
+const addTwo = (x, y) => x + y
+// const curryByTimes = (fn, arg, times) => (...args) => [...args, ...arg].length === times ? [...args, ...arg]
+
 // create a compose function 
 
 const compose = (f, g) => (x) => f(g(x))

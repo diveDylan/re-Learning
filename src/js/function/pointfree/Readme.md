@@ -93,6 +93,7 @@ const curryES6 = (fn, arg=[]) =>
 ```
 当然我们可以手动设置等待次数`fn.length`，指定函数等待时机结合数组的`reduce`返回处理的数值
 
+
 ### 组合compose
 
 ```
