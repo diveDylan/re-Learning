@@ -45,5 +45,11 @@ composeLog({ name: 'dylan' })
 composeLogA({ name: 'dylan' })
 composeLogB({ name: 'dylan' })
 
+const toUpperCase = x => x.toUpperCase()
+
+const snakeCase = compose(replace(/\s+/ig, '_'), toUpperCase)
+
+console.log('snakeCase', snakeCase('   '))
+
 
 

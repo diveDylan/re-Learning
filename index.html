@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script> -->
+    <!-- <script src="/flicker.js"></script> -->
   <title>Re-Learning</title>
   <style>
     .dn {
@@ -42,23 +44,11 @@
     </script>
   <!-- <iframe src="./video.html"  allow = "autoplay" width="1000" height="1000"></iframe> -->
 </body>
-<script src="/src/js/function/pointfree/index.js"> </script>
+<script src="/src/js/eventLoop.js"> </script>
 <script>
 /**
  * test video js
  */
-var btn = document.querySelector('button')
-var vid = document.querySelector('video')
-btn.onclick = function() {
-  vid.className = vid.className ? '' : 'dn'
-  vid.muted = !!vid.className 
-  if(vid.className) {
-    vid.pause()
-  }else {
-    
-    vid.play()
-  }
-}
 </script>
 </html>
 
