@@ -33,6 +33,6 @@ if (true) {
      '/node_modules' ]
  * }
  */
-console.log('c', c, module, module.children, exports)
+console.log('c', c, module, module.children, exports, require,)
 
 setTimeout(() => console.log('c', c, a), 2000)
