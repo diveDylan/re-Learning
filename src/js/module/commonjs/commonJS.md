@@ -1,7 +1,10 @@
 Node.js是commonJS规范的主要实践者，它有四个重要的环境变量为模块化的实现提供支持：module、exports、require、global。实际使用时，用module.exports定义当前模块对外输出的接口（不推荐直接用exports），用require加载模块。
 
-主要特点同步加载
-输出为文件的拷贝
+1、同步加载
+2、输出为文件的拷贝
+3、引用后文件的改动不会影响输出
+4、不需要知道引用的对象，可以赋值给新的变量，赋值变量可以更改
+5、module.exports只能有一个导出，后续的导出会覆盖前面的
 
 ```js
 TPYE MODULE

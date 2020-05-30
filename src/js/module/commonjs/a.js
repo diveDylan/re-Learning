@@ -5,3 +5,5 @@ setTimeout(() => {
   console.log(a)
 }, 1000)
 module.exports = a
+
+module.exports = 2

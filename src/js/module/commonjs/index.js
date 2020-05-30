@@ -4,8 +4,7 @@ if (true) {
    * a是文件的拷贝，引入后续的改动不影响c
    */
    a = require('./a')
-  // c = a
-  a = ''
+  c = a
 } else {
   let b = require('./b')
   c = b
