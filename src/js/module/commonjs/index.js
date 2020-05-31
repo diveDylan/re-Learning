@@ -1,14 +1,15 @@
 let c, a
-if (true) {
-  /**
-   * a是文件的拷贝，引入后续的改动不影响c
-   */
-   a = require('./a')
-  c = a
-} else {
-  let b = require('./b')
+require('./a')
+console.log(global.a,a)
+// if (true) {
+//   /**
+//    * a是文件的拷贝，引入后续的改动不影响c
+//    */
+//    c = a
+// } else {
+  let ['1' + '2' ] = require('./b')
   c = b
-}
+// }
 /**
  * Module is class Module
  * 这里的module 指的a的， c = a
@@ -32,6 +33,12 @@ if (true) {
      '/node_modules' ]
  * }
  */
-console.log('c', c, module, module.children, exports, require,)
+// console.log('c', c, module, module.children, exports, require, global.c)
 
-setTimeout(() => console.log('c', c, a), 2000)
+setTimeout(() => {
+ let { Hello, count } = require('./a')
+ const a = new Hello()
+  console.log(a.getId()) 
+  const b = new Hello()
+  console.log(b.getId()) 
+}, 2000)
