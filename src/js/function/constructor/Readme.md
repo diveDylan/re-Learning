@@ -37,6 +37,7 @@ new 关键字会进行如下的操作：
 // diy new 
 const diyNew = (fn, args) => {
   const obj = {}
+  obj.prototype = Object.create(fn.prototype)
   fn.call(obj, args)
   obj.__proto__ = Object.create(fn.prototype)
   // or Object.setPrototypeOf(Obj, Object.create(fn.prototype))
@@ -80,12 +81,14 @@ class Person {
 单例模式保证全局只有一个实例，避免对象重复创建的成本，暴露的是是实例对象，没有直接暴露类的构造函数更加安全可靠不可更改
 ```js
 class Person {
-  constructor(age) {
-    this.age 
+  constructor() {
+    // 返回存在实例
+    if (Person.instance) return Person.instance
+    this.age = 22
+    Person.instance = this
+    return Person.instance 
   }
-
+  static _instance = null
 }
-
-
-
 ```
+
