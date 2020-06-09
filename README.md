@@ -4,7 +4,7 @@
 
 > 目前主要温习js
 
-> 起服务 python -m SimpleHTTPServer 8081
+> 起服务 php -S 0.0.0.0:1325
 
 #### [media -- video自动播放](https://github.com/gnipbao/iblog/issues/25)
 
