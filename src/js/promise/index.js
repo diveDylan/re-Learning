@@ -66,4 +66,5 @@ new myPromise((resolve, reject) => {
    return val + 1
  }).then((val) => {
    console.log(val)
- })
+ }
+ 

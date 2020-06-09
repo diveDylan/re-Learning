@@ -52,5 +52,30 @@ class MyPromise {
       })
     })
   }
+  /**
+   * 
+   * @param {*} x resolve的值，promise 或者thenable
+   * TODO: thenable
+   */
+  static resolve(x) {
+    return  x instanceof MyPromise ? x : new MyPromise(resolve => {
+      resolve(x)
+    })
+  }
+
+  static all(promises) {
+    const result = []
+    return new MyPromise((resolve, reject) => {
+      const isRejected = false
+      for(let index= 0; index < promises.length; i ++) {
+        promise.then((res) => {
+          result[index] = res
+        }).catch(e => {
+          reject(e)
+          break;
+        })
+      }
+    })
+  }
 
 }
