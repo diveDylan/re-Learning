@@ -3,31 +3,33 @@
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise
  * 
  */
-const statusEnum = {
-  PENDING: 'PENDING',
-  FULFILLED: 'FULFILLED',
-  REJECTED: 'REJECTED'
-}
+
 class MyPromise {
   static length = 1
   constructor(excute) {
+    const statusEnum = {
+      PENDING: 'PENDING',
+      FULFILLED: 'FULFILLED',
+      REJECTED: 'REJECTED'
+    }
     this.status = statusEnum.PENDING
     this.value = null
-    this.fulfilledCbQueen = []
-    this.rejectCbQueen = []
+    this.fufilledQueue = []
+    this.rejectQueue = []
     const _resolve = res => {
       if(this.status !== statusEnum.PENDING) return
       this.status = statusEnum.FULFILLED
       this.value = res
-      this.fulfilledCbQueen.forEach( i => {
+      this.fufilledQueue.forEach( i => {
         this.value = i(this.value)
       })
+      
     }
     const _reject = res => {
       if(this.status !== statusEnum.PENDING) return
       this.status = statusEnum.REJECTED
       this.value = res
-      this.rejectCbQueen.forEach(i => {
+      this.rejectQueue.forEach(i => {
         this.value = i(this.value)
       })
     }
@@ -40,14 +42,14 @@ class MyPromise {
   // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
   then = (onFulfilled, onRejected) => {
     return new MyPromise((resolve, reject) => {
-      const _resloveFn = typeof onFulfilled === 'function' ? onFulfilled : x => x
-      const _rejectFn = typeof onRejected === 'function' ? onRejected : x => x
-      this.fulfilledCbQueen.push( value => {
-        const val = _resloveFn(value)
-        resolve(val)
+      const _resolve = typeof onFulfilled === 'function' ? onFulfilled : x => x
+      const _reject = typeof onRejected === 'function' ? onRejected : x => x
+      this.fufilledQueue.push(i => {
+       const val = _resolve(i)
+       resolve(val)
       })
-      this.rejectCbQueen.push(value => {
-        const val = _rejectFn(value)
+      this.rejectQueue.push(i => {
+        const val = _reject(i)
         reject(val)
       })
     })

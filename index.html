@@ -9,47 +9,43 @@
     .dn {
       display: none;
     }
+    ul {
+      width: 100px;
+      height: 200px;
+      background-color: rosybrown;
+    }
   </style>
 </head>
 <body>
     <video  width="1000" height="500" controls loop src="http://horizon-mall-test.oss-cn-hzfinance.aliyuncs.com/lottery-mini-test/e2996faeb80a8f19970572a684a549ab.mp4"></video>
     <button > trigger</button>
     <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      我是outter
+      <li>我是inner</li>
     </ul>
     
     <script>
     // Demo 1
-    // var ul = document.querySelectorAll('ul')[0],
-    //     lis = ul.querySelectorAll("li");
-    // for(var i = 0; i < 5 ; i++){
-    //     ul.appendChild(document.createElement("li"));
+    const ul = document.querySelector('ul')
+    const li = document.querySelector('li')
+    // ul.onclick = e => {
+    //   console.log('点击ul')
     // }
-    
-    // console.log(lis) //5
-    
-    // Demo 2
-    var ul = document.getElementsByTagName('ul')[0],
-        lis = ul.getElementsByTagName("li");
-    for(var i = 0; i < 5 ; i++){
-        ul.appendChild(document.createElement("li"));
+    li.onclick = e => {
+      console.log('点击li')
     }
-    
-    console.log(lis) //5+2
-    
+    ul.addEventListener('click', () => {
+      console.log('点击ul listenre')
+    }, false)
     </script>
   <!-- <iframe src="./video.html"  allow = "autoplay" width="1000" height="1000"></iframe> -->
 </body>
 <script src="/src/js/function/custom.js"> </script>
-<script type="module" src="./src/js/module/es/a.js">
-
+<script type="module" >
+import a from './src/js/module/es/a.js'
 setTimeout(() => {
   console.log(a)
-}, 2000)
+}, 100)
 </script>
 </html>
 
