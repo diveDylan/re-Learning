@@ -23,6 +23,7 @@
         width: 800,
         height: 600
       } }, function (stream) {
+        console.log('stream', stream)
           // 错误代码:
           // video.src = window.webkitURL.createObjectURL(stream); // 浏览器正在取消对 createObjectURL 的支持
           // 正确代码:
