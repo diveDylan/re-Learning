@@ -5,25 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<style>
-  p {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 24px;
-    color: #fff
-  }
-  div {
-    width: 100px;
-    height: 100px;
-    margin: 100px;
-  }
-</style>
-<script src="./promise-1.js"></script>
 <body>
-  <p >dylan watermask</p>
-  <div style="background-color: aqua;"></div>
-  <div style="background-color: cadetblue;"></div>
   <video id="video"></video>
   <canvas id="canvas"></canvas>
   <canvas id="canvas2"></canvas>
@@ -34,7 +16,8 @@
   var video = document.getElementById("video");
   var canvas = document.getElementById("canvas"),
       context = canvas.getContext("2d");
-
+  var canvas2 = document.getElementById("canvas2"),
+      context2 = canvas.getContext("2d");
        
   var w;
   var host = 'localhost';
@@ -65,13 +48,18 @@
       function sendImg() {
         context.drawImage(video, 0, 0, 640, 640);
         
-          w.send(canvas.toDataUrl());
+       
+          var imgData = canvas.toDataURL();
+          canvas2.style.backgroundImage = `url(${imgData})`
+          context.font = "48px serif";
+        context.fillText("dylan waterMask", 100, 100);
+          w.send(imgData);
       }
     }
   }
     
 
-// main()
+main()
 let count = 0
 document.addEventListener('visibilitychange',function(){ //浏览器切换事件
     if(document.visibilityState=='hidden') { //状态判断

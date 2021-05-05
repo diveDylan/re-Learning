@@ -51,6 +51,18 @@ import a from './src/js/module/es/a.js'
 setTimeout(() => {
   console.log(a)
 }, 100)
+
+
+function curry(fn) {
+  let len = fn.length
+  let arr = []
+  return (...rest) => {
+    let newArr = arr.concat(...rest)
+    if (newArr.length === len) {
+      return fn(...newArr)
+    }
+  }
+}
 </script>
 </html>
 

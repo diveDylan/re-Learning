@@ -5,37 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<style>
-  p {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 24px;
-    color: #fff
-  }
-  div {
-    width: 100px;
-    height: 100px;
-    margin: 100px;
-  }
-</style>
-<script src="./promise-1.js"></script>
 <body>
-  <p >dylan watermask</p>
-  <div style="background-color: aqua;"></div>
-  <div style="background-color: cadetblue;"></div>
   <video id="video"></video>
   <canvas id="canvas"></canvas>
-  <canvas id="canvas2"></canvas>
 </body>
 <script>
  function main () {
- 
   var video = document.getElementById("video");
   var canvas = document.getElementById("canvas"),
       context = canvas.getContext("2d");
-
-       
   var w;
   var host = 'localhost';
       var port = 8888;
@@ -64,14 +42,34 @@
       });
       function sendImg() {
         context.drawImage(video, 0, 0, 640, 640);
-        
-          w.send(canvas.toDataUrl());
+        context.fillStyle = '#fff';
+        context.font = '32px Josefin Slab';
+        context.rotate(-45 * Math.PI / 180);
+        context.fillText('dylan', 0, 0);
+        context.rotate(45 * Math.PI / 180);
+          var imgData = canvas.toDataURL();
+          w.send(imgData);
+      }
+
+    function waterMask(ctx, w, maxW) {
+      while (w < maxW) {
+        const REPEAT_NUM = 3; //  取巧重复x方向
+        const text = `潜水党专用    `; // 水印文本 空格用于x间隙
+        const waterMarkText = text.repeat(REPEAT_NUM);
+        ctx.translate(w, 200);
+        ctx.globalAlpha = 0.3;
+        ctx.fillStyle = '#fff';
+        ctx.font = '32px Josefin Slab';
+        ctx.rotate(-45 * Math.PI / 180);
+        ctx.fillText(waterMarkText, 0, 0);
+        ctx.rotate(45 * Math.PI / 180); // 画笔角度恢复
+        w = w + 20;
       }
     }
   }
-    
+}
 
-// main()
+main()
 let count = 0
 document.addEventListener('visibilitychange',function(){ //浏览器切换事件
     if(document.visibilityState=='hidden') { //状态判断

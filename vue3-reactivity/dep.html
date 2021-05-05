@@ -1,0 +1,56 @@
+<script>
+let activeEffect
+class Dep {
+    constructor(val) {
+       this._value = val
+       this.effects = new Set()
+
+    }
+    get value() {
+        this.depend()
+        return this._value
+    }
+    set value(val) {
+        this._value = val
+        this.notify()
+       
+       
+    }
+
+    depend() {
+        if (activeEffect) {
+            this.effects.add(activeEffect)
+        }
+    }
+    notify() {
+        this.effects.forEach(effect => {
+            effect()
+        })
+    }
+    clear() {
+        this.effects.clear()
+    }
+}
+
+function watchEffect(effect) {
+    activeEffect = effect
+    effect()
+    // to something
+    activeEffect = null
+}
+
+
+
+let dep = new Dep('test')
+watchEffect(()=> {
+    console.log(dep.value)
+})
+dep.value = 'hello'
+ 
+
+
+
+
+</script>
+
+<div id="app"></div>

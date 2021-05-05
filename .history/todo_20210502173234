@@ -10,7 +10,7 @@ TODO:
    ☐ 9、babel
    ☐ 10、loader
    ☐ 11、plugin
-   ✔ 12、extend @done(21-05-03 16:34)
+   ☐ 12、extend
    ✔ 13、柯理化 @done(21-05-02 17:16)
    ✔ 14、tcp udp @done(21-05-02 12:24)
    ✔ 15、eventBus @done(21-04-28 11:02)
@@ -18,14 +18,13 @@ TODO:
    ☐ 17、Etag 和 Last-modified 比较。
    ☐ 18、encodeURI 和 encodeURIComponent 的区别
    ☐ 19、commonJS 和 es6 模块化的区别
-   ✔ 20、防抖和节流 @done(21-05-02 18:03)
+   ☐ 20、防抖和节流
    ☐ 21、快排、冒泡和排序
    ☐ 22、fetch原理 options
    ☐ 23、call apply bind
    ☐ 24、二进制加法https://segmentfault.com/a/1190000011317502
    ✔ 25、script 标签会阻塞解析吗？会，怎么异步加载？(async, defer)，有什么不同？(加载顺序) @done(21-05-02 17:32)
    ☐ 26、http cache
-   ☐ 27、与或非操作符
 
    
 

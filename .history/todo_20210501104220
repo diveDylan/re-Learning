@@ -1,31 +1,30 @@
 TODO:
-   ✔ 1、new @done(21-05-01 10:58)
-   ✔ 2、promise .all .race 并发三个 @done(21-05-01 17:32)
+   ☐ 1、new
+   ☐ 2、promise .all .race 并发三个
    ☐ 3、原型链 
    ✔ 4、lru @done(21-04-28 09:43)
    ☐ 5、alv
    ☐ 6、vue源码
    ☐ 7、event loop node和浏览器
-   ☐ 8、http https ssl quick
+   ☐ 8、http
    ☐ 9、babel
    ☐ 10、loader
    ☐ 11、plugin
-   ✔ 12、extend @done(21-05-03 16:34)
-   ✔ 13、柯理化 @done(21-05-02 17:16)
-   ✔ 14、tcp udp @done(21-05-02 12:24)
+   ☐ 12、extend
+   ☐ 13、柯理化
+   ☐ 14、tcp udp ssl
    ✔ 15、eventBus @done(21-04-28 11:02)
-   ✔ 16、on 和 addEventListener 的区别 @done(21-05-02 17:32)
+   ☐ 16、on 和 addEventListener 的区别
    ☐ 17、Etag 和 Last-modified 比较。
    ☐ 18、encodeURI 和 encodeURIComponent 的区别
    ☐ 19、commonJS 和 es6 模块化的区别
-   ✔ 20、防抖和节流 @done(21-05-02 18:03)
+   ☐ 20、防抖和节流
    ☐ 21、快排、冒泡和排序
    ☐ 22、fetch原理 options
    ☐ 23、call apply bind
    ☐ 24、二进制加法https://segmentfault.com/a/1190000011317502
-   ✔ 25、script 标签会阻塞解析吗？会，怎么异步加载？(async, defer)，有什么不同？(加载顺序) @done(21-05-02 17:32)
+   ☐ 25、script 标签会阻塞解析吗？会，怎么异步加载？(async, defer)，有什么不同？(加载顺序)
    ☐ 26、http cache
-   ☐ 27、与或非操作符
 
    
 
