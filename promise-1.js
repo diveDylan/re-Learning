@@ -87,7 +87,6 @@ class MyPromise {
     let fulfilledHander = typeof fulfilledFn === 'function' ? fulfilledFn : fulfilledFn => fulfilledFn
     let rejectedHandler = typeof rejectedFn === 'function' ? rejectedFn : rejectedFn => rejectedFn
     return new MyPromise((resolve, reject) => {
-     
       const fulfilledCallback = (val) => {
         try {
           let res = fulfilledHander(val)
