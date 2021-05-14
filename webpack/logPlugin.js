@@ -24,10 +24,13 @@ class LogPlugin {
       }
       Object.keys(compilation.assets).forEach(file => {
         compilation.updateAsset(file , asset => {
-          // asset._source._children contains a content array
-          let contentArr = asset._source._children
-          handlerAsset(contentArr)
-          return asset
+          // if (asset._source) {
+          //   // asset._source._children contains a content array
+          //   let contentArr = asset._source._children
+          //   handlerAsset(contentArr)
+            return asset
+          // }
+
         })
       })
     })

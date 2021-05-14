@@ -1,9 +1,4 @@
 /*
- * @author: dylan 
- * @mail: 949440946@qq.com 
- * @update: Sat May 08 2021 10:50:37 GMT+0800 (中国标准时间)
- */
-/*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.
  * It uses "eval()" calls to create a separate source file in the browser devtools.
@@ -30,7 +25,7 @@ eval("red\n\n//# sourceURL=webpack://re-learning/./webpack/webpack.tp?");
   \******************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("// require('./webpack.tj')\nconsole.log('ssss')\n__webpack_require__(/*! ./webpack.tp */ \"./webpack/webpack.tp\")\n\n//# sourceURL=webpack://re-learning/./webpack/webpack-1.js?");
+eval("// require('./webpack.tj')\nconsole.log('ssss')\n__webpack_require__(/*! ./webpack.tp */ \"./webpack/webpack.tp\")\n\nfunction selectionSort(arr) {\n  console.log('www')\n  let len = arr.length\n  let j = 0\n  while(j < len) {\n    let min = arr[j]\n    let pre = j\n    for(let i = j + 1; i < len; i ++) {\n      if (min > arr[i]) {\n        pre = i\n        min = arr[i]\n      }\n    }\n    // change places\n    [arr[j], arr[pre]] = [min, arr[j]]\n    j ++\n    \n  }\n  return arr\n}\n\n\n\n//# sourceURL=webpack://re-learning/./webpack/webpack-1.js?");
 
 /***/ })
 

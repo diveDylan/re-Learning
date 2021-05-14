@@ -5,29 +5,37 @@ TODO:
    ✔ 4、lru @done(21-04-28 09:43)
    ☐ 5、alv
    ✔ 6、vue源码 @done(21-05-05 14:45)
-      ☐ proxy需要递归，但是源码里还没有找到这个点
+      ☐ proxy需要递归，reactive createGetter()
    ☐ 7、event loop node和浏览器
    ☐ 8、http https ssl quick
    ☐ 9、babel
-   ☐ 10、loader
-   ☐ 11、plugin
+   ✔ 10、loader @done(21-05-08 11:03)
+      ☐ this.async 为异步
+   ✔ 11、plugin @done(21-05-08 11:03)
    ✔ 12、extend @done(21-05-03 16:34)
    ✔ 13、柯理化 @done(21-05-02 17:16)
    ✔ 14、tcp udp @done(21-05-02 12:24)
    ✔ 15、eventBus @done(21-04-28 11:02)
    ✔ 16、on 和 addEventListener 的区别 @done(21-05-02 17:32)
    ☐ 17、Etag 和 Last-modified 比较。
-   ☐ 18、encodeURI 和 encodeURIComponent 的区别
+   ✔ 18、encodeURI 和 encodeURIComponent 的区别 @done(21-05-08 15:23)
+      ☐ encodeURI：（不转义） 具有保留字符 ; , / ? : @ & = + $， 数字符号
+         ☐ @important 自身无法产生能适用于HTTP GET 或 POST 请求的URI，例如对于 XMLHTTPRequests, 因为 "&", "+", 和 "=" 不会被编码，然而在 GET 和 POST 请求中它们是特殊字符
+      ☐ encodeURIComponent: 不转义： A-Z a-z 0-9 - _ . ! ~ * ' ( ) --encodeURI 通用
+      为了避免服务器收到不可预知的请求，对任何用户输入的作为URI部分的内容你都需要用encodeURIComponent进行转义
    ☐ 19、commonJS 和 es6 模块化的区别
    ✔ 20、防抖和节流 @done(21-05-02 18:03)
-   ☐ 21、快排、冒泡和排序
+   ✔ 21、快排、冒泡和选择排序 @done(21-05-09 21:06)
    ☐ 22、fetch原理 options
    ✔ 23、call apply bind 箭头函数 @done(21-05-05 21:53)
-   ☐ 24、二进制加法https://segmentfault.com/a/1190000011317502
+   ☐ 24、二进制加法 
+      https://segmentfault.com/a/1190000011317502
    ✔ 25、script 标签会阻塞解析吗？会，怎么异步加载？(async, defer)，有什么不同？(加载顺序) @done(21-05-02 17:32)
-      ☐ 都是渲染dom的时候异步加载脚本，defer保证先后顺序，一版在DocumentContentLoaded执行，sync不保证先后顺序，加载完成立马执行，建议sync的代码不要涉及dom操作
+      ☐ 都是渲染dom的时候异步加载脚本，defer保证先后顺序，一版在DocumentContentLoaded前执行，sync不保证先后顺序，加载完成立马执行，建议sync的代码不要涉及dom操作
    ☐ 26、http cache
    ☐ 27、与或非操作符
+   ☐ 28、react fiber 架构
+   ☐ 29、内存泄漏
 
 
    css:

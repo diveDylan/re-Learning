@@ -7,5 +7,44 @@
 <body>
   <video width="1000" height="1000" autoplay muted loop src="http://horizon-mall-test.oss-cn-hzfinance.aliyuncs.com/lottery-mini-test/e2996faeb80a8f19970572a684a549ab.mp4"></video>
 </body>
+<script>
+function TreeNode(val, left, right) {
+  this.val = (val===undefined ? 0 : val)
+  this.left = (left===undefined ? null : left)
+  this.right = (right===undefined ? null : right)
+}
+var buildTree = function (preorder, inorder) {
+  // let p = (i = 0);
+  // function newTree(stop) {
+  //   if (inorder[i] !== stop) {
+  //     let root = new TreeNode(preorder[p++]);
+  //     // 先找到最left的节点 inorder遍历 第一个 l -> m -> r -> mp -> mpr
+  //     // inorder 0 left最深节点 1 left 的父节点，上级调用栈，2 right
+  //     // preorder r -> l -> l -> l
+  //     root.left = newTree(root.val);
+  //     i++;
+  //     // 父级调用栈选用 parent.stop
+  //     root.right = newTree(stop);
+  //     return root;
+  //   }
+  //   return null;
+  // }
+  // return newTree();
+  function find(preoder, inorder) {
+    if (preoder.length === 1) return preoder[0];
+    let root = new TreeNode(preoder[0]);
+     debugger
+    console.log(preoder, inorder, Object.prototype.toString.call(inorder));
+    let ir = inorder.findIndex(preoder[0]) + 1;
+    let pr = preoder.findIndex(inorder[0]) + 1;
+    root.left = find(preoder.slice(1, pr), inorder.slice(0, ir));
+    root.right = find(preoder.slice(pr), inorder.slice(ir));
+    return root;
+  }
+  return find(preorder, inorder);
+};
 
+buildTree([3,9,20,15,7],
+[9,3,15,20,7])
+</script>
 </html>
