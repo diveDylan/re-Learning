@@ -2,9 +2,14 @@
  * @vnode
  * *   flag: string
  * *   children?: Array<Vnode>
+ * *   props: {
+ * *        className
+ * *   }
  * @param {input} string <div><div><p>1</p></div></div>
  * @notice normally we have a root element
  * @假设不出现 < < /字符
+ * @TODO deal with props styles
+ * "<div class=\"red\" style=\"width: 100px\" onClick=\"alert(1)\" ><p>1</p><ul><li>111<a>sss</a></li></ul></div>"
  */
 function createVnode(input) {
 
@@ -41,9 +46,39 @@ function createVnode(input) {
           let parent = stack[stack.length - 1]
           parent.children.push(node)
         } else {
-          const tagName =  str.replace( /\</, '')
+          // const tagName =  str.replace( /\</, '')
+          str += '>'
+          const tagName = str.match(/\<([a-z]+)\s?/)[1]
+          // deal with attribute and event
+          let props = null
+          console.log(str, /\<[a-z]+\s(.+)\>/.test(str))
+          if (/\<[a-z]+\s(.+)\>/.test(str)) {
+            let propsString = str.match(/\<[a-z]+\s(.+)\>/)[1]
+
+          if (propsString.length) {
+            props = {}
+            let propsList =
+            propsString
+                .replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
+                .split('" ')
+                .map(propsStr => propsStr.split('='))
+            propsList.forEach(propsItem => {
+
+              if (propsItem[0].startsWith('on')) {
+                let eventKey = propsItem[0].toLowerCase().slice(2)
+                props.on = props.on || {}
+                props.on[eventKey] = propsItem[1]
+              } else {
+                props[propsItem[0]] = propsItem[1]
+              }
+            })
+
+          }
+          }
+
           stack.push({
             tag: tagName,
+            props,
             children: []
           })
         }

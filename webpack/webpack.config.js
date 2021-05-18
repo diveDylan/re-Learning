@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tp$/,
+        test: /\.js$/,
         use: path.resolve(__dirname, 'tj-loader.js')
       }
     ]
@@ -35,7 +35,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-  compress: true,
-  port: 9000
+    compress: true,
+    port: 9000
   },
 }

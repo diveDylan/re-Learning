@@ -1,9 +1,14 @@
+const { parse } = require('@babel/parser')
+const babel = require("@babel/core");
+
 module.exports = function(source) {
-  console.log(source)
-  console.log('context', this.context)
-  console.log('resource', this.resource)
-  console.log('this.resourceQuery', this.resourceQuery)
-  console.log('target', this.target)
-  
+
+  console.log('parse', parse('class Example {}'))
+  // babel.transform(source, {}, function(err, result) {
+  //   if (err) console.log(err)
+  //   else {
+  //     console.log(result)
+  //   }
+  // } )
   return 'red'
 }

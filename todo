@@ -1,13 +1,24 @@
 TODO:
    ✔ 1、new @done(21-05-01 10:58)
    ✔ 2、promise .all .race 并发三个 @done(21-05-01 17:32)
-   ☐ 3、原型链 
+   ✔ 3、原型链 @done(21-05-15 11:49)
    ✔ 4、lru @done(21-04-28 09:43)
    ☐ 5、alv
    ✔ 6、vue源码 @done(21-05-05 14:45)
       ☐ proxy需要递归，reactive createGetter()
    ☐ 7、event loop node和浏览器
    ☐ 8、http https ssl quick
+    ssl RSA:
+    ☐ client -> server Random NumberA 支持的证书版本
+    ☐ server-> client Random Number B 选择的证书和公钥
+    ☐ 客户端收到Random Number B 生成 premaster_secrect C, A+B+C => 生成master_secret
+    ☐ client -> server 使用公钥证书将premaster_secrect发送给服务器
+    ☐ server 通过私钥解密premaster_secrect，通过相同算法使用A+B+C得到master_secret
+
+    ssl DH和ecc:
+
+
+
    ☐ 9、babel
    ✔ 10、loader @done(21-05-08 11:03)
       ☐ this.async 为异步
@@ -28,21 +39,66 @@ TODO:
    ✔ 21、快排、冒泡和选择排序 @done(21-05-09 21:06)
    ☐ 22、fetch原理 options
    ✔ 23、call apply bind 箭头函数 @done(21-05-05 21:53)
-   ☐ 24、二进制加法 
+   ✔ 24、二进制加法 @done(21-05-15 14:18)
       https://segmentfault.com/a/1190000011317502
    ✔ 25、script 标签会阻塞解析吗？会，怎么异步加载？(async, defer)，有什么不同？(加载顺序) @done(21-05-02 17:32)
       ☐ 都是渲染dom的时候异步加载脚本，defer保证先后顺序，一版在DocumentContentLoaded前执行，sync不保证先后顺序，加载完成立马执行，建议sync的代码不要涉及dom操作
-   ☐ 26、http cache
-   ☐ 27、与或非操作符
+   ☐ 26、http cache @high
+   ✔ 27、与或非操作符 @done(21-05-15 14:18)
    ☐ 28、react fiber 架构
-   ☐ 29、内存泄漏
+   ✔ 29、内存泄漏 @high @done(21-05-18 10:14)
+   chrome 堆:
+    新生代内存区:
+      ☐ 大多数的对象被分配在这里，这个区域很小但是垃圾回特别频繁
+    老生代指针区:
+      ☐ 属于老生代，这里包含了大多数可能存在指向其他对象的指针的对象，大多数从新生代晋升的对象会被移动到这里
+    老生代数据区:
+      ☐ 属于老生代，这里只保存原始数据对象，这些对象没有指向其他对象的指针
+    大对象区:
+        ☐ 这里存放体积超越其他区大小的对象，每个对象有自己的内存，垃圾回收其不会移动大对象
+    代码区:
+      ☐ 代码对象，也就是包含JIT之后指令的对象，会被分配在这里。唯一拥有执行权限的内存区
+    Cell区:
+      ☐ 属性Cell区、Map区：存放Cell、属性Cell和Map，每个区域都是存放相同大小的元素，结构简单
+    ☐  新生代 空间较小，空间换时间的算法处理 scavenge算法，FROM-》TO区域的来回互换 广度优先遍历，剔除不可达对象
+      多次存在新生代的对象会晋升到老生代内存中
+      ☐ 通过scanlocation 和allowLocation两个执针，
+      ☐ 1、先标记对象的可达性
+      ☐ 2、复制From 可达性对象 到 TO 空间并排序
+      ☐ 3、释放From的不可达对象
+      ☐ 4、From 和 To 指针互换，移动scanLocation至allowLocation重合， allowLocation更新
+    ☐ 老生代 空间比较大（老生代指针区-》大部分晋升的对象），老生代数据区
+    ☐ 三色标记
+    ☐ 白色初始状态
+    ☐ 灰色，被垃圾回收扫描到，但是邻接对象未全部处理完毕
+    ☐ 黑色，被垃圾回收扫描且邻接对象全部处理完毕
+    ☐ 最终结果非黑即白，白色为垃圾对象
+      ☐ Mark-Sweep 标记清除
+        第一阶段：遍历标记可达对象
+        第二阶段：遍历清除不可达对象
+        问题：对象的地址乱序导致太多内存碎片
+      ☐ Mark-Compact 标记整理
+      在对象标记死亡后将活跃对象前移
+    ☐ 增量标记，拆分垃圾回收的维度，设定阈值5-10ms，可停顿将其穿插在js执行任务中，类似react的scheduler
+    ☐ 惰性清理，等js执行，收集足够的回收任务后，在执行，类似缓存
+    ☐ 还有并发和并行，将GC交给辅助进程，最后回收时刻进行回调处理
+
+
+   ✔ 30、cookie @high @done(21-05-16 17:11)
+   ✔ 31、history replaceState @high @done(21-05-16 17:08)
+    ☐ -->history.replace(state, title, url)
+     ☐ --> state  history.state
+       ☐ --> scrollRestoration 滚动
+
+   ☐ 32、typescript @high namespace
+   33、
 
 
    css:
       ☐ flex
       ☐ grid
 
-   
+
 
 
 
@@ -50,8 +106,8 @@ TODO:
 
 ✔ 1、正则学习 @important @started(19-04-06 11:25) @done(19-04-16 16:55) @lasted(1w3d5h30m48s)
 ✔ 2、柯里化函数 @high @done(19-04-03 21:06)
-☐ 3、观察者模式、发布订阅模式 @high   
-☐ 4、你不知道的js阅读 @high 
+☐ 3、观察者模式、发布订阅模式 @high
+☐ 4、你不知道的js阅读 @high
 
 ☐ 5、 proxy部分
    ✔ a.对apply可拦截情况的理解 @done(19-04-18 16:54)
@@ -83,7 +139,7 @@ TODO:
 ☐ 5、Bom是什么？列举你知道的Bom对象，了解过hybrid通信的实现原理么
 ✔ 6、fetch和ajax的区别 @done(20-06-28 20:54)
 ✔ 7、data-xxx 属性的作用是什么？ @done(20-06-28 20:54)
-☐ 8、什么是浏览器的标准模式和怪异模式解释一下盒模型宽高值的计算方式，边界塌陷，负值作用，box-sizing概念- 
+☐ 8、什么是浏览器的标准模式和怪异模式解释一下盒模型宽高值的计算方式，边界塌陷，负值作用，box-sizing概念-
 ☐ 缓存了解吗？
 ☐ XSS是什么说一下？
 ☐ CSRF了解吗？
@@ -98,4 +154,4 @@ TODO:
 ☐ 搜索倒计时怎么做？
 ☐ 实现一个响应式的正方形节流函数怎么写？
 ☐ 手写bind函数如何用CSS实现一个三角形
- 
+
